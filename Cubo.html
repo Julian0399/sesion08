@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html>
   <head>
-    <title>Ej: Cubo</title>
+    <title>3 cubos</title>
     <style>
       html, body { margin: 0; padding: 0; overflow: hidden; }
     </style>
@@ -46,7 +46,7 @@
 
       //Escena
 			var size = 10;
-			var arrowSize = 1;
+			var arrowSize = 2
 			var divisions = size;
 			var origin = new THREE.Vector3( 0, 0, 0 );
 			var x = new THREE.Vector3( 1, 0, 0 );
@@ -89,12 +89,33 @@
                     
                 }
             }
+			for(var i=0;i<4;i++){
+				//CREAR LOS MATERIALES
+				var material = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
+				//CREAR LOS OBJETOS
+				object = new THREE.Mesh(geoCubo, material);
+				tx=tx/2;
+		       ty=ty/2;                                                           // INTENTANDO CREAR LA FUNCION PERO SE PONE PANTALLA NEGRA, BUSCANDO ERRORES.
+		       tz=tz/2;
+			   object.elementsNeedUpdate=true;
+			   object2.applyMatrix4(matrizE(tx,ty,tz,alturaC))
+
+				scene.add( object);
+
+
+            }
+
+
 			
+<<<<<<< Updated upstream
 			//CREAR LOS MATERIALES
             var material = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
 			
 			//CREAR LOS OBJETOS
 			object = new THREE.Mesh(geoCubo, material);
+=======
+
+>>>>>>> Stashed changes
 		  
 		  	//AGREGAR A LA ESCENA
         scene.add( gridHelperXZ );

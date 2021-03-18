@@ -13,6 +13,10 @@
 		var startTime = Date.now();
     var upArrow = false;
 		var downArrow = false;
+		var tx=1;
+	 var ty=1;
+	 var tz=1;
+	// var s=1/2;
 
 		
 		init();
@@ -76,7 +80,7 @@
 			
 			//CREAR LAS GEOMETRÍAS
             //Punto
-            var geoCubo = new THREE.BoxGeometry(1,1,1);
+            var geoCubo = new THREE.BoxGeometry(tx,ty,tz);
             //var resZ = 1;
             for( var i = 0; i < geoCubo.faces.length; i++) {
               switch (i) {
@@ -92,9 +96,13 @@
 			
 			//CREAR LOS MATERIALES
             var material = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
-			
+			var material2 = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
+			var material3 = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
 			//CREAR LOS OBJETOS
 			object = new THREE.Mesh(geoCubo, material);
+			object2 = new THREE.Mesh(geoCubo, material2);                //Creando los objetos y arriba materiales.
+			object3 = new THREE.Mesh(geoCubo, material3);
+
 		  
 		  	//AGREGAR A LA ESCENA
         scene.add( gridHelperXZ );
@@ -118,24 +126,18 @@
         var dtime = Date.now()-startTime;
         camera.lookAt( 0, 0, 0 );
         renderer.render( scene, camera );
-        var tx=0, ty=0, tz=0;
-		if(upArrow) {
-			tx=1;
-		}
-		if(downArrow) {
-			tx=-1;
-		}
-
 		//MATRIZ DE TRASLACIÓN
-		var t = new THREE.Matrix4();		//Crear la matriz de traslación
-		t.set( 	1, 0, 0, tx,
-				    0, 1, 0, ty, 
-				    0, 0, 1, tz,
+		function matrizE(x, y, z)                          //Crear la funcion que tiene la matriz de multiplicacion escala y traslacion
+		 {
+		var t = new THREE.Matrix4();		
+		t.set( 	x, 0, 0, 0,
+				    0, y, 0, 0, 
+				    0, 0, z, 0,
 				    0, 0, 0, 1	);
 
 		cubo.applyMatrix(t);				//Aplicar la matriz de traslación al objeto				
 		cubo.elementsNeedUpdate = true;	//Avisar que la matriz del objeto ha cambiado
-
+	}
 
     }
     </script>

@@ -48,7 +48,7 @@
 			var size = 10;
 			var arrowSize = 1;
 			var divisions = size;
-			var origin = new THREE.Vector3( 1, 0, 0 );
+			var origin = new THREE.Vector3( 0, 0, 0 );
 			var x = new THREE.Vector3( 1, 0, 0 );
 			var y = new THREE.Vector3( 0, 1, 0 );
 		  	var z = new THREE.Vector3( 0, 0, 1 );
@@ -91,7 +91,7 @@
             }
 			
 			//CREAR LOS MATERIALES
-            var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF } );
+            var material = new THREE.MeshBasicMaterial( { color: color1, vertexColors: THREE.FaceColors } );
 			
 			//CREAR LOS OBJETOS
 			object = new THREE.Mesh(geoCubo, material);
